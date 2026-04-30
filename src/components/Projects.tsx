@@ -2,12 +2,12 @@ import { motion } from 'motion/react';
 import { SectionHeading } from './SectionHeading';
 
 const PROJECT_IMAGES = [
-  { url: "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?q=80&w=2070", title: "Global Heights", location: "Gurugram" },
-  { url: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070", title: "Omaxe Mall", location: "Faridabad" },
-  { url: "https://images.unsplash.com/photo-1486406146926-c627a92fb1ab?q=80&w=2070", title: "Signature Tower", location: "New Delhi" },
-  { url: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2070", title: "Emaar Palm", location: "Faridabad" },
-  { url: "https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?q=80&w=2070", title: "Brahma City", location: "Faridabad" },
-  { url: "https://images.unsplash.com/photo-1519003300449-424ad0405323?q=80&w=2070", title: "Star Mall", location: "Sector 19" },
+  { url: "https://th.bing.com/th/id/OIP.TqeOtLwH5fStyJWw33oH8gHaHa?w=190&h=191&c=7&r=0&o=7&dpr=1.8&pid=1.7&rm=3", title: "Global Heights", location: "Gurugram" },
+  { url: "https://th.bing.com/th/id/OIP.jQP6ivPqUP7C-KshC20avgHaHa?w=140&h=182&c=7&r=0&o=7&dpr=1.8&pid=1.7&rm=3", title: "Omaxe Mall", location: "Faridabad" },
+  { url: "https://th.bing.com/th/id/OIP.NPsEmeHrxcXPslovhsNwxwAAAA?w=115&h=182&c=7&r=0&o=7&dpr=1.8&pid=1.7&rm=3", title: "Signature Tower", location: "New Delhi" },
+  { url: "https://th.bing.com/th/id/OIP.248fZ0VIMhdgg-fHD2b7AgHaFR?w=251&h=180&c=7&r=0&o=7&dpr=1.8&pid=1.7&rm=3", title: "Emaar Palm", location: "Faridabad" },
+  { url: "https://th.bing.com/th/id/OIP.cDPf_U_qx9Uq7-9RpnvOaAHaE8?w=268&h=180&c=7&r=0&o=7&dpr=1.8&pid=1.7&rm=3", title: "Faridabad", location: "Faridabad" },
+  { url: "https://th.bing.com/th/id/OIP.PWjO-XA2rb3WRS_tMsuWIgHaE-?w=286&h=192&c=7&r=0&o=7&dpr=1.8&pid=1.7&rm=3", title: "Sector 19", location: "Faridabad" },
 ];
 
 export const Projects = () => {

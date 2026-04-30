@@ -22,7 +22,7 @@ export const Partners = () => {
         </h2>
       </div>
 
-      <div className="relative">
+      <div className="relative overflow-hidden w-full">
         <motion.div
           animate={{ x: [0, -2000] }}
           transition={{ repeat: Infinity, duration: 60, ease: "linear" }}

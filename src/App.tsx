@@ -12,6 +12,7 @@ import { WhoWeAre } from './components/WhoWeAre';
 import { Stats } from './components/Stats';
 import { Services } from './components/Services';
 import { WhyChooseUs } from './components/WhyChooseUs';
+import { IndustriesWeServe } from './components/IndustriesWeServe';
 import { Support247 } from './components/Support247';
 import { WorkProcess } from './components/WorkProcess';
 import { Projects } from './components/Projects';
@@ -24,6 +25,11 @@ import { WhatsAppButton } from './components/WhatsAppButton';
 import { CallButton } from './components/CallButton';
 import { motion, useScroll, useSpring } from 'motion/react';
 import { Certificates } from './pages/Certificates';
+import { SafetyCompliance } from './pages/SafetyCompliance';
+import { AboutPage } from './pages/AboutPage';
+import { ServicesPage } from './pages/ServicesPage';
+import { ProjectsPage } from './pages/ProjectsPage';
+import { ContactPage } from './pages/ContactPage';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -42,7 +48,7 @@ function HomePage() {
   });
 
   return (
-    <div className="relative">
+    <div className="relative overflow-x-hidden w-full max-w-full">
       {/* Progress Bar */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 bg-brand-red z-[60] origin-left"
@@ -51,12 +57,13 @@ function HomePage() {
 
       <Navbar />
       
-      <main>
+      <main className="overflow-x-hidden w-full relative">
         <Hero />
         <About />
         <WhoWeAre />
         <Stats />
         <Services />
+        <IndustriesWeServe />
         <WhyChooseUs />
         <Support247 />
         <WorkProcess />
@@ -80,7 +87,12 @@ export default function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/contact" element={<ContactPage />} />
         <Route path="/certificates" element={<Certificates />} />
+        <Route path="/safety" element={<SafetyCompliance />} />
       </Routes>
     </Router>
   );

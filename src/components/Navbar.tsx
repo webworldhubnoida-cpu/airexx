@@ -16,12 +16,12 @@ export const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Team', href: '#team' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' },
+    { name: 'Services', href: '/services' },
+    { name: 'Safety', href: '/safety' },
+    { name: 'Projects', href: '/projects' },
+    { name: 'Contact', href: '/contact' },
   ];
 
   return (
@@ -60,74 +60,74 @@ export const Navbar = () => {
       )}
 
       <nav
-        className={`transition-all duration-300 h-16 flex items-center ${
+        className={`transition-all duration-300 ${
           isScrolled ? 'bg-white/90 backdrop-blur-md border-b border-slate-200' : 'bg-white border-b border-slate-100'
         }`}
       >
-      <div className="max-w-7xl mx-auto px-8 w-full flex items-center justify-between">
-        <a href="#home" className="flex items-center gap-2">
-          <img src="/gallery/logo.png" alt="AIREXX ELEVATORS" className="h-35 w-auto object-contain" />
-        </a>
-
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className={`hover:text-brand-red transition-colors text-brand-navy ${link.name === 'Home' ? 'text-brand-red' : ''}`}
-            >
-              {link.name}
-            </a>
-          ))}
-          <a
-            href="#contact"
-            className="bg-brand-red hover:bg-brand-red-hover text-white px-5 py-2 rounded shadow-lg shadow-brand-red/20 transition-all font-semibold uppercase tracking-wider text-xs"
-          >
-            Get a Quote
+        <div className="max-w-7xl mx-auto px-8 h-16 w-full flex items-center justify-between">
+          <a href="#home" className="flex items-center gap-2">
+            <img src="/gallery/logo.png" alt="AIREXX ELEVATORS" className="h-35 w-auto object-contain" />
           </a>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-8 text-sm font-medium">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className={`hover:text-brand-red transition-colors text-brand-navy ${link.name === 'Home' ? 'text-brand-red' : ''}`}
+              >
+                {link.name}
+              </a>
+            ))}
+            <a
+              href="#contact"
+              className="bg-brand-red hover:bg-brand-red-hover text-white px-5 py-2 rounded shadow-lg shadow-brand-red/20 transition-all font-semibold uppercase tracking-wider text-xs"
+            >
+              Get a Quote
+            </a>
+          </div>
+
+          {/* Mobile Toggle */}
+          <button
+            className="md:hidden text-brand-navy"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
         </div>
 
-        {/* Mobile Toggle */}
-        <button
-          className="md:hidden text-brand-navy"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t border-slate-200 overflow-hidden"
-          >
-            <div className="flex flex-col p-4 gap-4">
-              {navLinks.map((link) => (
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden bg-white border-t border-slate-200 overflow-hidden shadow-xl"
+            >
+              <div className="flex flex-col p-4 gap-2">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className="text-base font-bold text-slate-700 p-3 hover:bg-slate-50 hover:text-brand-red rounded-lg transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.name}
+                  </a>
+                ))}
                 <a
-                  key={link.name}
-                  href={link.href}
-                  className="text-lg font-semibold text-slate-700 p-2 hover:bg-slate-50 rounded"
+                  href="#contact"
+                  className="mt-2 bg-brand-red text-white p-4 rounded-xl text-center font-bold shadow-lg shadow-brand-red/20"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  {link.name}
+                  Get a Quote
                 </a>
-              ))}
-              <a
-                href="#contact"
-                className="bg-brand-red text-white p-4 rounded text-center font-bold"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Get a Quote
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
     </div>
   );

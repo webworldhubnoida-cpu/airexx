@@ -22,21 +22,20 @@ export const Hero = () => {
   return (
     <section id="home" className="relative min-h-[600px] md:min-h-0 md:aspect-video w-full flex items-center overflow-hidden bg-slate-50 mt-24 md:mt-28">
       {/* Background Slideshow */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <AnimatePresence mode="wait">
-          <motion.img
+          <motion.div
             key={currentImageIndex}
-            src={BACKGROUND_IMAGES[currentImageIndex]}
-            initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ opacity: 0.8, scale: 1 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.8 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="absolute inset-0 w-full h-full object-cover"
-            referrerPolicy="no-referrer"
-          />
+            transition={{ duration: 1, ease: "easeInOut" }}
+            className="absolute inset-0 w-full h-full bg-fixed bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url("${BACKGROUND_IMAGES[currentImageIndex]}")` }}
+          ></motion.div>
         </AnimatePresence>
         {/* Gradient Overlay for Text Readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/10 to-transparent z-[1]"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/20 to-transparent z-[1]"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 md:px-8 w-full h-full relative z-10 flex items-center">

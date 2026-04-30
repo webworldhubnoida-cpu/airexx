@@ -33,6 +33,7 @@ export const CONTACT_INFO = {
   ],
   gstin: "06ABDCA6730C1Z4",
   udyam: "UDYAM-HR-03-0008546",
+  cin: "U28112HR2023PTC112345", // Placeholder CIN
   whatsapp: "+919350532047",
   socials: {
     facebook: "#",
