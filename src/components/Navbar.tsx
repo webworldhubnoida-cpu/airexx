@@ -2,10 +2,12 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, Mail, Phone, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
 import { CONTACT_INFO } from '../constants';
+import { useQuote } from '../context/QuoteContext';
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { openQuoteModal } = useQuote();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,13 +62,13 @@ export const Navbar = () => {
       )}
 
       <nav
-        className={`transition-all duration-300 ${
-          isScrolled ? 'bg-white/90 backdrop-blur-md border-b border-slate-200' : 'bg-white border-b border-slate-100'
+        className={`transition-all duration-500 ${
+          isScrolled ? 'bg-white/95 backdrop-blur-lg border-b border-slate-200 py-1 shadow-md' : 'bg-white border-b border-slate-100 py-3'
         }`}
       >
         <div className="max-w-7xl mx-auto px-8 h-16 w-full flex items-center justify-between">
           <a href="#home" className="flex items-center gap-2">
-            <img src="/gallery/logo.png" alt="AIREXX ELEVATORS" className="h-35 w-auto object-contain" />
+            <img src="/gallery/logo.png" alt="AIRREXX ELEVATORS" className="h-35 w-auto object-contain" />
           </a>
 
           {/* Desktop Navigation */}
@@ -80,12 +82,12 @@ export const Navbar = () => {
                 {link.name}
               </a>
             ))}
-            <a
-              href="#contact"
+            <button
+              onClick={openQuoteModal}
               className="bg-brand-red hover:bg-brand-red-hover text-white px-5 py-2 rounded shadow-lg shadow-brand-red/20 transition-all font-semibold uppercase tracking-wider text-xs"
             >
               Get a Quote
-            </a>
+            </button>
           </div>
 
           {/* Mobile Toggle */}
@@ -117,13 +119,15 @@ export const Navbar = () => {
                     {link.name}
                   </a>
                 ))}
-                <a
-                  href="#contact"
+                <button
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    openQuoteModal();
+                  }}
                   className="mt-2 bg-brand-red text-white p-4 rounded-xl text-center font-bold shadow-lg shadow-brand-red/20"
-                  onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Get a Quote
-                </a>
+                </button>
               </div>
             </motion.div>
           )}

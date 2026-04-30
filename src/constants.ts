@@ -22,11 +22,12 @@ export const COLORS = {
 export const CONTACT_INFO = {
   address: "Shop No. 59, Ground Floor, Mathura Road, Vardhman Star Mall, Sector 19, Faridabad, Haryana – 121002",
   emails: [
-    "Airexxelevatorspvtltd@gmail.com",
+    "Airrexxelevatorspvtltd@gmail.com",
     "Info@airexxelevatorspvtltd.com",
     "Director@airexxelevatorspvtltd.com",
-    "Saleservice@airexxelevatorspvtltd.com"
+    "Sales-service@airexxelevatorspvtltd.com"
   ],
+  website: "www.airrexxelevatorspvtltd.com",
   phones: [
     { name: "Jagmohan Singh", number: "+91 9350532047" },
     { name: "Deepak Singh", number: "+91 9304522997" }

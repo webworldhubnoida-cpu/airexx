@@ -19,6 +19,7 @@ export const Support247 = () => {
               <img 
                 src="https://images.pexels.com/photos/8867431/pexels-photo-8867431.jpeg" 
                 alt="24/7 Support Center"
+                loading="lazy"
                 className="w-full h-full object-cover grayscale brightness-75 transition-transform duration-700 hover:scale-105"
                 referrerPolicy="no-referrer"
               />
@@ -53,10 +54,17 @@ export const Support247 = () => {
                     "Preventive Maintenance",
                     "Safety Certified"
                   ].map((item, idx) => (
-                    <div key={idx} className="flex items-center gap-3 text-white">
+                    <motion.div 
+                      key={idx} 
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.4 + idx * 0.1, duration: 0.5 }}
+                      className="flex items-center gap-3 text-white"
+                    >
                       <CheckCircle2 className="text-brand-red shrink-0" size={20} />
                       <span className="font-medium text-sm">{item}</span>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
 

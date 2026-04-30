@@ -69,7 +69,7 @@ export const AboutPage = () => {
               transition={{ duration: 0.8 }}
             >
               <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
-                About <span className="text-brand-red">Airexx</span>
+                About <span className="text-brand-red">Airrexx</span>
               </h1>
               <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
                 Pioneering excellence in vertical transportation with a legacy built on safety, innovation, and trust.
@@ -90,11 +90,11 @@ export const AboutPage = () => {
               >
                 <SectionHeading 
                   title="A Legacy of Engineering Excellence"
-                  subtitle="AIREXX ELEVATORS stands as a testament to Indian engineering prowess. We are a collective of designers, engineers, and visionaries dedicated to moving people safely."
+                  subtitle="AIRREXX ELEVATORS stands as a testament to Indian engineering prowess. We are a collective of designers, engineers, and visionaries dedicated to moving people safely."
                 />
                 <div className="mt-8 space-y-6 text-slate-600 leading-relaxed text-lg">
                   <p>
-                    Founded with a vision to redefine urban mobility, Airexx Elevators has grown into a leader in the infrastructure sector. Our journey is marked by continuous innovation and a commitment to delivering superior vertical transportation solutions.
+                    Founded with a vision to redefine urban mobility, Airrexx Elevators has grown into a leader in the infrastructure sector. Our journey is marked by continuous innovation and a commitment to delivering superior vertical transportation solutions.
                   </p>
                   <p>
                     From high-rise commercial complexes to luxury residential villas, our elevators are engineered to provide seamless, silent, and safe travel for millions.
@@ -112,6 +112,7 @@ export const AboutPage = () => {
                   <img
                     src="https://images.pexels.com/photos/8554322/pexels-photo-8554322.jpeg"
                     alt="Our Team at Work"
+                    loading="lazy"
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"
                   />

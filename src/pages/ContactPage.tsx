@@ -1,11 +1,42 @@
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { SectionHeading } from '../components/SectionHeading';
 import { CONTACT_INFO } from '../constants';
-import { Mail, Phone, MapPin, Send, MessageSquare, Clock, ShieldCheck } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, MessageSquare, Clock, ShieldCheck, CheckCircle2, Loader2 } from 'lucide-react';
 
 export const ContactPage = () => {
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    setStatus('submitting');
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    // Construct WhatsApp Message
+    const message = `*New Contact Message from Website*\n\n` +
+      `*Name:* ${data.fullName}\n` +
+      `*Phone:* ${data.phone}\n` +
+      `*Email:* ${data.email}\n` +
+      `*Message:* ${data.message}`;
+
+    const whatsappUrl = `https://wa.me/${CONTACT_INFO.whatsapp.replace('+', '')}?text=${encodeURIComponent(message)}`;
+
+    console.log('Contact Message:', data);
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    // Redirect to WhatsApp
+    window.open(whatsappUrl, '_blank');
+
+    setStatus('success');
+    form.reset();
+    setTimeout(() => setStatus('idle'), 5000);
+  };
+
   return (
     <div className="min-h-screen flex flex-col pt-16">
       <Navbar />
@@ -16,7 +47,7 @@ export const ContactPage = () => {
           <div className="absolute inset-0 z-0">
             <img 
               src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?q=80&w=2070&auto=format&fit=crop" 
-              alt="Contact Airexx"
+              alt="Contact Airrexx"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-brand-navy-dark/85"></div>
@@ -123,32 +154,57 @@ export const ContactPage = () => {
                   Direct Message
                 </h3>
                 
-                <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div className="space-y-3">
-                      <label className="text-xs font-bold uppercase tracking-widest text-slate-400">Your Name</label>
-                      <input type="text" className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:border-brand-red outline-none transition-all text-white placeholder:text-white/20" placeholder="Full Name" />
+                {status === 'success' ? (
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="bg-white/10 backdrop-blur-md p-10 rounded-3xl border border-white/20 text-center"
+                  >
+                    <div className="w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center mx-auto mb-6">
+                      <CheckCircle2 size={32} />
                     </div>
-                    <div className="space-y-3">
-                      <label className="text-xs font-bold uppercase tracking-widest text-slate-400">Phone Number</label>
-                      <input type="tel" className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:border-brand-red outline-none transition-all text-white placeholder:text-white/20" placeholder="+91 XXX" />
+                    <h4 className="text-2xl font-bold mb-3">Message Sent!</h4>
+                    <p className="text-white/60">Thank you for reaching out. Our team will contact you shortly.</p>
+                  </motion.div>
+                ) : (
+                  <form className="space-y-8" onSubmit={handleSubmit}>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <div className="space-y-3">
+                        <label className="text-xs font-bold uppercase tracking-widest text-slate-400">Your Name</label>
+                        <input required name="fullName" type="text" className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:border-brand-red outline-none transition-all text-white placeholder:text-white/20" placeholder="Full Name" />
+                      </div>
+                      <div className="space-y-3">
+                        <label className="text-xs font-bold uppercase tracking-widest text-slate-400">Phone Number</label>
+                        <input required name="phone" type="tel" className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:border-brand-red outline-none transition-all text-white placeholder:text-white/20" placeholder="+91 XXX" />
+                      </div>
                     </div>
-                  </div>
-                  
-                  <div className="space-y-3">
-                    <label className="text-xs font-bold uppercase tracking-widest text-slate-400">Email Address</label>
-                    <input type="email" className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:border-brand-red outline-none transition-all text-white placeholder:text-white/20" placeholder="your@email.com" />
-                  </div>
+                    
+                    <div className="space-y-3">
+                      <label className="text-xs font-bold uppercase tracking-widest text-slate-400">Email Address</label>
+                      <input required name="email" type="email" className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:border-brand-red outline-none transition-all text-white placeholder:text-white/20" placeholder="your@email.com" />
+                    </div>
 
-                  <div className="space-y-3">
-                    <label className="text-xs font-bold uppercase tracking-widest text-slate-400">Your Message</label>
-                    <textarea className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:border-brand-red outline-none transition-all text-white h-40 resize-none placeholder:text-white/20" placeholder="How can we help you?"></textarea>
-                  </div>
+                    <div className="space-y-3">
+                      <label className="text-xs font-bold uppercase tracking-widest text-slate-400">Your Message</label>
+                      <textarea required name="message" className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:border-brand-red outline-none transition-all text-white h-40 resize-none placeholder:text-white/20" placeholder="How can we help you?"></textarea>
+                    </div>
 
-                  <button className="w-full bg-brand-red text-white py-5 rounded-2xl font-bold text-lg shadow-xl shadow-brand-red/20 hover:bg-red-700 transition-all flex items-center justify-center gap-3">
-                    Send Inquiry <Send size={20} />
-                  </button>
-                </form>
+                    <button 
+                      disabled={status === 'submitting'}
+                      className="w-full bg-brand-red text-white py-5 rounded-2xl font-bold text-lg shadow-xl shadow-brand-red/20 hover:bg-red-700 transition-all flex items-center justify-center gap-3 disabled:opacity-70"
+                    >
+                      {status === 'submitting' ? (
+                        <>
+                          <Loader2 className="animate-spin" size={20} /> Sending...
+                        </>
+                      ) : (
+                        <>
+                          Send Inquiry <Send size={20} />
+                        </>
+                      )}
+                    </button>
+                  </form>
+                )}
               </motion.div>
             </div>
           </div>

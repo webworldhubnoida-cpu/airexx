@@ -27,10 +27,14 @@ export const WhyChooseUs = () => {
             {WHY_CHOOSE_US.map((item, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ 
+                  delay: index * 0.1, 
+                  duration: 0.8,
+                  ease: [0.21, 1.11, 0.81, 0.99] // Custom spring-like easing
+                }}
                 className="p-8 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all group backdrop-blur-sm"
               >
                 <div className="text-brand-red mb-6 scale-110 group-hover:scale-125 transition-transform duration-300">

@@ -37,19 +37,26 @@ export const Footer = () => {
         {/* BRAND */}
         <div>
           <div className="flex items-center gap-2 mb-5">
-            <img src="/gallery/footerlogo.png" alt="AIREXX ELEVATORS" className="h-20 w-auto" />
+            <img src="/gallery/footerlogo.png" alt="AIRREXX ELEVATORS" className="h-20 w-auto" />
           </div>
 
           <p className="text-sm leading-relaxed text-gray-500 mb-6">
             Premium solutions provider for installation, maintenance, and modernization of vertical transportation systems.
           </p>
 
-          <div className="flex gap-3">
+          <div className="flex gap-3 mb-6">
             {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
               <a key={i} href="#" className="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center hover:bg-red-600 hover:text-white transition">
                 <Icon size={16} />
               </a>
             ))}
+          </div>
+
+          <div className="flex items-center gap-2 text-xs text-gray-400">
+            <Globe size={14} className="text-red-600" />
+            <a href={`https://${CONTACT_INFO.website}`} target="_blank" rel="noopener noreferrer" className="hover:text-red-600 transition-colors">
+              {CONTACT_INFO.website}
+            </a>
           </div>
         </div>
 
@@ -59,11 +66,12 @@ export const Footer = () => {
             Quick Links
           </h4>
           <ul className="space-y-3 text-sm">
-            <li><a href="#home" className="hover:text-red-600">Home</a></li>
-            <li><a href="#services" className="hover:text-red-600">Services</a></li>
-            <li><a href="#projects" className="hover:text-red-600">Projects</a></li>
+            <li><Link to="/" className="hover:text-red-600">Home</Link></li>
+            <li><Link to="/about" className="hover:text-red-600">About</Link></li>
+            <li><Link to="/services" className="hover:text-red-600">Services</Link></li>
+            <li><Link to="/projects" className="hover:text-red-600">Projects</Link></li>
             <li><Link to="/certificates" className="hover:text-red-600">Certificates</Link></li>
-            <li><a href="#contact" className="hover:text-red-600">Contact</a></li>
+            <li><Link to="/contact" className="hover:text-red-600">Contact</Link></li>
           </ul>
         </div>
 
@@ -75,9 +83,9 @@ export const Footer = () => {
           <ul className="space-y-3 text-sm">
             {SERVICES.slice(0, 5).map((service, i) => (
               <li key={i}>
-                <a href="#services" className="hover:text-red-600">
+                <Link to="/services" className="hover:text-red-600">
                   {service.title}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -148,7 +156,7 @@ export const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 md:px-8 pt-6 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
         
         <div className="text-center md:text-left">
-          © 2026 AIREXX ELEVATORS PRIVATE LIMITED
+          © 2026 AIRREXX ELEVATORS PRIVATE LIMITED
         </div>
 
         <div className="flex gap-6">

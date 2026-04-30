@@ -1,9 +1,41 @@
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { SectionHeading } from './SectionHeading';
 import { CONTACT_INFO } from '../constants';
-import { Mail, Phone, MapPin, Send, MessageSquare } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, MessageSquare, Loader2, CheckCircle2 } from 'lucide-react';
 
 export const Contact = () => {
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    setStatus('submitting');
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    // Construct WhatsApp Message
+    const message = `*New Inquiry from Website*\n\n` +
+      `*Name:* ${data.fullName}\n` +
+      `*Phone:* ${data.phone}\n` +
+      `*Email:* ${data.email}\n` +
+      `*Service:* ${data.service}\n` +
+      `*Message:* ${data.message}`;
+
+    const whatsappUrl = `https://wa.me/${CONTACT_INFO.whatsapp.replace('+', '')}?text=${encodeURIComponent(message)}`;
+
+    console.log('Inquiry:', data);
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    // Redirect to WhatsApp
+    window.open(whatsappUrl, '_blank');
+
+    setStatus('success');
+    form.reset();
+    setTimeout(() => setStatus('idle'), 5000);
+  };
+
   return (
     <section id="contact" className="section-padding bg-brand-navy-dark text-white overflow-hidden relative">
       {/* Decorative gradient */}
@@ -81,43 +113,65 @@ export const Contact = () => {
             </div>
             
             <h3 className="text-xl font-bold mb-8">Send us a Message</h3>
-            <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-slate-600">Full Name</label>
-                  <input type="text" className="w-full px-4 py-2.5 bg-white border border-slate-200 rounded focus:border-brand-red outline-none transition-all text-sm shadow-sm" placeholder="John Doe" />
+            
+            {status === 'success' ? (
+              <div className="py-10 text-center">
+                <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <CheckCircle2 size={32} />
                 </div>
-                <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-slate-600">Phone</label>
-                  <input type="tel" className="w-full px-4 py-2.5 bg-white border border-slate-200 rounded focus:border-brand-red outline-none transition-all text-sm shadow-sm" placeholder="+91 XXX" />
+                <h4 className="text-2xl font-bold text-brand-navy mb-2">Inquiry Sent!</h4>
+                <p className="text-slate-500">Redirecting to WhatsApp for final confirmation...</p>
+              </div>
+            ) : (
+              <form className="space-y-5" onSubmit={handleSubmit}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] font-bold uppercase tracking-widest text-slate-600">Full Name</label>
+                    <input required name="fullName" type="text" className="w-full px-4 py-2.5 bg-white border border-slate-200 rounded focus:border-brand-red outline-none transition-all text-sm shadow-sm" placeholder="John Doe" />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] font-bold uppercase tracking-widest text-slate-600">Phone</label>
+                    <input required name="phone" type="tel" className="w-full px-4 py-2.5 bg-white border border-slate-200 rounded focus:border-brand-red outline-none transition-all text-sm shadow-sm" placeholder="+91 XXX" />
+                  </div>
                 </div>
-              </div>
-              
-              <div className="space-y-1.5">
-                <label className="text-[10px] font-bold uppercase tracking-widest text-slate-600">Email</label>
-                <input type="email" className="w-full px-4 py-2.5 bg-white border border-slate-200 rounded focus:border-brand-red outline-none transition-all text-sm shadow-sm" placeholder="your@email.com" />
-              </div>
+                
+                <div className="space-y-1.5">
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-slate-600">Email</label>
+                  <input required name="email" type="email" className="w-full px-4 py-2.5 bg-white border border-slate-200 rounded focus:border-brand-red outline-none transition-all text-sm shadow-sm" placeholder="your@email.com" />
+                </div>
 
-              <div className="space-y-1.5">
-                <label className="text-[10px] font-bold uppercase tracking-widest text-slate-600">Service Required</label>
-                <select className="w-full px-4 py-2.5 bg-white border border-slate-200 rounded focus:border-brand-red outline-none transition-all text-sm shadow-sm font-medium">
-                  <option>Passenger Elevator</option>
-                  <option>Home Elevator</option>
-                  <option>Freight Elevator</option>
-                  <option>Maintenance</option>
-                </select>
-              </div>
+                <div className="space-y-1.5">
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-slate-600">Service Required</label>
+                  <select name="service" className="w-full px-4 py-2.5 bg-white border border-slate-200 rounded focus:border-brand-red outline-none transition-all text-sm shadow-sm font-medium">
+                    <option>Passenger Elevator</option>
+                    <option>Home Elevator</option>
+                    <option>Freight Elevator</option>
+                    <option>Maintenance</option>
+                  </select>
+                </div>
 
-              <div className="space-y-1.5">
-                <label className="text-[10px] font-bold uppercase tracking-widest text-slate-600">Message</label>
-                <textarea rows={3} className="w-full px-4 py-2.5 bg-white border border-slate-200 rounded focus:border-brand-red outline-none transition-all text-sm shadow-sm resize-none" placeholder="Your requirements..." />
-              </div>
+                <div className="space-y-1.5">
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-slate-600">Message</label>
+                  <textarea required name="message" rows={3} className="w-full px-4 py-2.5 bg-white border border-slate-200 rounded focus:border-brand-red outline-none transition-all text-sm shadow-sm resize-none" placeholder="Your requirements..." />
+                </div>
 
-              <button className="w-full bg-brand-navy hover:bg-brand-navy-dark text-white py-3.5 rounded font-bold transition-all shadow-md flex items-center justify-center gap-2 group">
-                Send Enquiry
-                <Send size={16} className="group-hover:translate-x-1 transition-transform" />
-              </button>
-            </form>
+                <button 
+                  disabled={status === 'submitting'}
+                  className="w-full bg-brand-navy hover:bg-brand-navy-dark text-white py-3.5 rounded font-bold transition-all shadow-md flex items-center justify-center gap-2 group disabled:opacity-70"
+                >
+                  {status === 'submitting' ? (
+                    <>
+                      <Loader2 className="animate-spin" size={16} /> Sending...
+                    </>
+                  ) : (
+                    <>
+                      Send Enquiry
+                      <Send size={16} className="group-hover:translate-x-1 transition-transform" />
+                    </>
+                  )}
+                </button>
+              </form>
+            )}
           </motion.div>
         </div>
 

@@ -125,7 +125,7 @@ export const SafetyCompliance = () => {
               <div>
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">Why Safety Matters to Us</h2>
                 <p className="text-slate-400 text-lg leading-relaxed mb-8">
-                  At Airexx, safety isn't just a checkbox—it's the core of our engineering philosophy. We understand that our products move millions of people every day, and we take that responsibility seriously.
+                  At Airrexx, safety isn't just a checkbox—it's the core of our engineering philosophy. We understand that our products move millions of people every day, and we take that responsibility seriously.
                 </p>
                 <div className="space-y-4">
                   <div className="flex items-center gap-4">

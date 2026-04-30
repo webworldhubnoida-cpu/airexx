@@ -34,7 +34,7 @@ export const WhoWeAre = () => {
           >
             <SectionHeading
               title="A Legacy of Engineering Excellence"
-              subtitle="AIREXX ELEVATORS stands as a testament to Indian engineering prowess. We are a collective of designers, engineers, and visionaries dedicated to moving people safely."
+              subtitle="AIRREXX ELEVATORS stands as a testament to Indian engineering prowess. We are a collective of designers, engineers, and visionaries dedicated to moving people safely."
             />
             
             <div className="mt-12 space-y-8">
@@ -70,9 +70,10 @@ export const WhoWeAre = () => {
           >
             <div className="relative">
               <div className="aspect-square rounded-full overflow-hidden border-8 border-white shadow-2xl relative z-10">
-                <img
+                <img 
                   src="https://images.pexels.com/photos/8554322/pexels-photo-8554322.jpeg"
                   alt="Our Team at Work"
+                  loading="lazy"
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />

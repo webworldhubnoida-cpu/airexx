@@ -15,7 +15,8 @@ export const ServicesPage = () => {
           <div className="absolute inset-0 z-0">
             <img 
               src="https://images.unsplash.com/photo-1519003300449-424ad0405323?q=80&w=2070&auto=format&fit=crop" 
-              alt="Airexx Services"
+              alt="Airrexx Services"
+              loading="eager"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-brand-navy-dark/80"></div>
@@ -31,15 +32,21 @@ export const ServicesPage = () => {
                 Our <span className="text-brand-red">Services</span>
               </h1>
               <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-                Comprehensive vertical transportation solutions engineered for performance, reliability, and safety.
+                Comprehensive elevator solutions tailored to meet the unique needs of every structure.
               </p>
             </motion.div>
           </div>
         </section>
 
-        {/* Services Grid */}
+        {/* Services Detail */}
         <section className="section-padding bg-white">
           <div className="max-w-7xl mx-auto px-6 md:px-8">
+            <div className="text-center mb-20">
+              <SectionHeading 
+                title="Vertical Transportation Experts"
+                subtitle="From concept to commissioning, Airrexx provides end-to-end services that prioritize safety and user experience."
+              />
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               {SERVICES.map((service, index) => (
                 <motion.div
@@ -52,9 +59,10 @@ export const ServicesPage = () => {
                 >
                   <div className="md:w-2/5 relative overflow-hidden h-64 md:h-auto">
                     <img 
-                      src={service.image} 
+                      src={`${service.image}&auto=format&fit=crop&w=1000&h=800`} 
                       alt={service.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                       referrerPolicy="no-referrer"
                     />
                     <div className="absolute inset-0 bg-brand-navy-dark/20 group-hover:bg-transparent transition-colors duration-500"></div>

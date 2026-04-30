@@ -48,7 +48,7 @@ export const About = () => {
         >
           <SectionHeading
             title="Pioneering the Future of Vertical Transportation"
-            subtitle="At AIREXX ELEVATORS PRIVATE LIMITED, we don't just build elevators; we engineer trust. Our commitment to innovation and safety has made us a leader in the industry."
+            subtitle="At AIRREXX ELEVATORS PRIVATE LIMITED, we don't just build elevators; we engineer trust. Our commitment to innovation and safety has made us a leader in the industry."
             light
           />
           

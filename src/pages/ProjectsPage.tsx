@@ -59,7 +59,8 @@ export const ProjectsPage = () => {
           <div className="absolute inset-0 z-0">
             <img 
               src="https://images.pexels.com/photos/439391/pexels-photo-439391.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
-              alt="Airexx Projects"
+              alt="Airrexx Projects"
+              loading="eager"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-brand-navy-dark/85"></div>
@@ -75,7 +76,7 @@ export const ProjectsPage = () => {
                 Our <span className="text-brand-red">Projects</span>
               </h1>
               <p className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-                Showcasing our architectural footprint through iconic elevator installations across India.
+                A showcase of excellence and engineering precision across residential and commercial landscapes.
               </p>
             </motion.div>
           </div>
@@ -84,6 +85,12 @@ export const ProjectsPage = () => {
         {/* Projects Grid */}
         <section className="section-padding bg-white">
           <div className="max-w-7xl mx-auto px-6 md:px-8">
+            <div className="text-center mb-16">
+              <SectionHeading 
+                title="Engineering Landmarks"
+                subtitle="Explore our portfolio of successfully completed projects, each reflecting the Airrexx commitment to quality."
+              />
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
               {PROJECT_GALLERY.map((project, index) => (
                 <motion.div
@@ -97,6 +104,7 @@ export const ProjectsPage = () => {
                   <img
                     src={`${project.url}&auto=format&fit=crop&w=1000&h=1200`}
                     alt={project.title}
+                    loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                     referrerPolicy="no-referrer"
                   />
