@@ -37,10 +37,12 @@ export const CONTACT_INFO = {
   cin: "U28112HR2023PTC112345", // Placeholder CIN
   whatsapp: "+919350532047",
   socials: {
-    facebook: "#",
-    twitter: "#",
-    instagram: "#",
-    linkedin: "#"
+    facebook: "https://www.facebook.com/Airexxelevators",
+    twitter: "https://x.com/Airexxelevators",
+    instagram: "https://www.instagram.com/airexelevators",
+    linkedin: "https://www.linkedin.com/in/airexxelevators/",
+    pinterest: "https://in.pinterest.com/airexxelevators",
+    youtube: "https://www.youtube.com/@Airexxelevators"
   }
 };
 

@@ -22,7 +22,13 @@ export const Certificates = () => {
     {
       name: "UDYAM Registration Certificate",
       number: CONTACT_INFO.udyam,
-      file: "/gallery/udyam.jpeg",
+      file: "/gallery/udyam2.pdf",
+      desc: "Micro, Small and Medium Enterprises (MSME) registration certificate."
+    },
+      {
+      name: "UDYAM  Certificate",
+      number: CONTACT_INFO.udyam,
+      file: "/gallery/udyam1.pdf",
       desc: "Micro, Small and Medium Enterprises (MSME) registration certificate."
     }
   ];

@@ -1,5 +1,12 @@
 import { CONTACT_INFO, SERVICES } from '../constants';
-import { Facebook, Twitter, Instagram, Linkedin, Users, Globe, MapPin, Phone, Mail } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Linkedin, Users, Globe, MapPin, Phone, Mail, Youtube } from 'lucide-react';
+
+// Custom Pinterest Icon
+const Pinterest = ({ size }: { size: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 2C6.477 2 2 6.477 2 12c0 4.237 2.636 7.855 6.356 9.312-.088-.791-.167-2.005.035-2.868.181-.78 1.172-4.97 1.172-4.97s-.299-.6-.299-1.486c0-1.39.806-2.428 1.81-2.428.854 0 1.265.64 1.265 1.41 0 .858-.546 2.14-.828 3.33-.236.995.5 1.807 1.48 1.807 1.778 0 3.144-1.874 3.144-4.58 0-2.393-1.72-4.068-4.177-4.068-2.847 0-4.518 2.135-4.518 4.341 0 .859.331 1.781.744 2.281a.3.3 0 0 1 .069.288l-.278 1.133c-.044.183-.145.223-.335.134-1.249-.581-2.03-2.407-2.03-3.874 0-3.154 2.292-6.052 6.608-6.052 3.469 0 6.165 2.471 6.165 5.776 0 3.447-2.173 6.22-5.188 6.22-1.013 0-1.964-.525-2.29-1.146l-.623 2.374c-.225.868-.834 1.956-1.241 2.62.93.285 1.914.438 2.935.438 5.523 0 10-4.477 10-10S17.523 2 12 2Z" fill="currentColor" stroke="none" />
+  </svg>
+);
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
@@ -45,11 +52,24 @@ export const Footer = () => {
           </p>
 
           <div className="flex gap-3 mb-6">
-            {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
-              <a key={i} href="#" className="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center hover:bg-red-600 hover:text-white transition">
-                <Icon size={16} />
-              </a>
-            ))}
+            <a href={CONTACT_INFO.socials.facebook} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center hover:bg-red-600 hover:text-white transition">
+              <Facebook size={16} />
+            </a>
+            <a href={CONTACT_INFO.socials.twitter} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center hover:bg-red-600 hover:text-white transition">
+              <Twitter size={16} />
+            </a>
+            <a href={CONTACT_INFO.socials.instagram} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center hover:bg-red-600 hover:text-white transition">
+              <Instagram size={16} />
+            </a>
+            <a href={CONTACT_INFO.socials.linkedin} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center hover:bg-red-600 hover:text-white transition">
+              <Linkedin size={16} />
+            </a>
+            <a href={CONTACT_INFO.socials.pinterest} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center hover:bg-red-600 hover:text-white transition">
+              <Pinterest size={16} />
+            </a>
+            <a href={CONTACT_INFO.socials.youtube} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center hover:bg-red-600 hover:text-white transition">
+              <Youtube size={16} />
+            </a>
           </div>
 
           <div className="flex items-center gap-2 text-xs text-gray-400">
