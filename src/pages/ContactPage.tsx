@@ -211,7 +211,7 @@ export const ContactPage = () => {
         </section>
 
         {/* Map Placeholder */}
-        <section className="h-[400px] w-full bg-slate-100 grayscale hover:grayscale-0 transition-all duration-700 overflow-hidden">
+        <section className="h-[400px] w-full overflow-hidden">
            <iframe 
             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1403.953835925066!2d77.3493179!3d28.4197552!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cdd7356bf4fed%3A0xbf812662c245df1a!2sAi%C5%95rex%20elevator!5e0!3m2!1sen!2sin!4v1714381589000!5m2!1sen!2sin" 
             width="100%" 

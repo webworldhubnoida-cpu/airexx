@@ -10,6 +10,7 @@ import {
   Truck,
   Home
 } from 'lucide-react';
+import { number } from 'motion';
 
 export const COLORS = {
   primary: '#E11D2E',
@@ -30,7 +31,8 @@ export const CONTACT_INFO = {
   website: "www.airrexxelevatorspvtltd.com",
   phones: [
     { name: "Jagmohan Singh", number: "+91 9350532047" },
-    { name: "Deepak Singh", number: "+91 9304522997" }
+    { name: "Deepak Singh", number: "+91 9304522997" },
+    {name:"Sales",number:"+91 9308888773"}
   ],
   gstin: "06ABDCA6730C1Z4",
   udyam: "UDYAM-HR-03-0008546",
